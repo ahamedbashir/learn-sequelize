@@ -62,16 +62,20 @@ function deleteGenreYouAdded() {
   Rosario Dawson acted in the movie Eagle Eye.
   Add this association.
 */
-function associateRosarioToEagleEye() {
-
+async function associateRosarioToEagleEye() {
+  let Dawson = await Actor.findOne({where: {name: 'Rosario Dawson'}});
+  let movie = await Movie.findOne({where: {title: 'Eagle Eye'}});
+  return Dawson.addMovie(movie);
 }
 
 /*
   Robert Downey Jr. acted in the movie Tropic Thunder.
   Add this association.
 */
-function associateRobertToTropicThunder() {
-
+async function associateRobertToTropicThunder() {
+  let Robert = await Actor.findOne({where: {name: 'Robert Downey Jr.'}});
+  let movie = await Movie.findOne({where: {title: 'Tropic Thunder'}});
+  return Robert.addMovie(movie);
 }
 
 module.exports = {
